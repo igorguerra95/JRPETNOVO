@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  --background: 38 45% 97%;
+  --foreground: 145 24% 13%;
+  --surface: 0 0% 100%;
+  --surface-warm: 36 38% 94%;
+  --primary: 142 72% 29%;
+  --primary-bright: 142 76% 36%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 351 81% 49%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 38 24% 91%;
+  --muted-foreground: 145 12% 35%;
+  --border: 36 22% 86%;
+  --ring: 142 72% 29%;
+
+  --pastel-green: 142 52% 93%;
+  --pastel-rose: 350 75% 94%;
+  --pastel-blue: 204 82% 93%;
+  --pastel-yellow: 45 92% 91%;
+  --pastel-lavender: 264 68% 94%;
+  --pastel-coral: 12 85% 94%;
+
+  --footer-bg: 148 30% 11%;
+  --footer-fg: 40 33% 96%;
+  --footer-muted: 145 14% 72%;
+
+  --shadow-card: 0 8px 28px -8px hsl(145 24% 13% / 0.08), 0 2px 6px -2px hsl(145 24% 13% / 0.04);
+  --shadow-card-hover: 0 20px 40px -12px hsl(145 24% 13% / 0.14), 0 6px 14px -4px hsl(142 76% 36% / 0.12);
+  --shadow-float: 0 16px 36px -8px hsl(145 24% 13% / 0.16);
+  --gradient-cta: linear-gradient(125deg, hsl(142 72% 29%) 0%, hsl(142 76% 36%) 48%, hsl(351 81% 49%) 100%);
+  --gradient-hero-glow: radial-gradient(circle at 80% 20%, hsl(142 60% 88% / 0.55) 0%, transparent 55%),
+    radial-gradient(circle at 12% 80%, hsl(351 75% 92% / 0.5) 0%, transparent 50%);
+}
+
+@theme {
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-surface: hsl(var(--surface));
+  --color-surface-warm: hsl(var(--surface-warm));
+  --color-primary: hsl(var(--primary));
+  --color-primary-bright: hsl(var(--primary-bright));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+
+  --color-pastel-green: hsl(var(--pastel-green));
+  --color-pastel-rose: hsl(var(--pastel-rose));
+  --color-pastel-blue: hsl(var(--pastel-blue));
+  --color-pastel-yellow: hsl(var(--pastel-yellow));
+  --color-pastel-lavender: hsl(var(--pastel-lavender));
+  --color-pastel-coral: hsl(var(--pastel-coral));
+
+  --color-footer-bg: hsl(var(--footer-bg));
+  --color-footer-fg: hsl(var(--footer-fg));
+  --color-footer-muted: hsl(var(--footer-muted));
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-card-hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+.bg-hero-glow {
+  background-image: var(--gradient-hero-glow);
+}
+
+.bg-cta-gradient {
+  background-image: var(--gradient-cta);
+}
+
+.grain-overlay {
+  background-image: radial-gradient(hsl(145 24% 13% / 0.035) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
