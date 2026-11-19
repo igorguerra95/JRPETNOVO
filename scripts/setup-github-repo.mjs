@@ -15,11 +15,16 @@
 const GITHUB_TOKEN = process.env.PAGES_AUTOMATION_TOKEN;
 const TARGET_REPO = (process.env.TARGET_REPO || '').trim();
 const TARGET_OWNER = (process.env.TARGET_OWNER || '').trim();
+const CURRENT_REPOSITORY = (process.env.GITHUB_REPOSITORY || '').trim();
 
 if (!GITHUB_TOKEN) {
-  console.error('❌ ERRO: O segredo PAGES_AUTOMATION_TOKEN não foi encontrado nas variáveis de ambiente.');
-  console.error('   Certifique-se de que o segredo foi cadastrado no repositório central modelo-previas.');
-  process.exit(1);
+  console.warn('ℹ️ Automação central ignorada: a variável PAGES_AUTOMATION_TOKEN não está definida neste ambiente.');
+  if (CURRENT_REPOSITORY && !CURRENT_REPOSITORY.endsWith('/modelo-previas')) {
+    console.log(`ℹ️ Repositório "${CURRENT_REPOSITORY}" utiliza apenas o workflow .github/workflows/deploy.yml para publicar no GitHub Pages.`);
+  } else {
+    console.log('ℹ️ Para ativar a automação central multi-repositório, cadastre o segredo PAGES_AUTOMATION_TOKEN em Settings -> Secrets and variables -> Actions.');
+  }
+  process.exit(process.env.REQUIRE_AUTOMATION_TOKEN === 'true' ? 1 : 0);
 }
 
 const headers = {
